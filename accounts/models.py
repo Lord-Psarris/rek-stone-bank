@@ -1,7 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import (
-    AbstractBaseUser, BaseUserManager
-)
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import PermissionsMixin
 
 
 def upload_path(instance, filename):
@@ -10,7 +9,7 @@ def upload_path(instance, filename):
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None, account_type=None, phone_number=None, profile_photo=None, firstname=None, lastname=None, username=None, location=None, address=None, is_staff=False, is_active=True, is_admin=False):
+    def create_user(self, email, password=None, account_type=None, phone_number=None, profile_photo=None, firstname=None, lastname=None, username=None, location=None, address=None, is_staff=False, is_active=True, is_superuser=False):
         if not email:
             raise ValueError("All the fields haven't been adequately filled")
         if not password:
@@ -34,7 +33,7 @@ class UserManager(BaseUserManager):
 
         user_obj.staff = is_staff
         user_obj.active = is_active
-        user_obj.admin = is_admin
+        user_obj.admin = is_superuser
 
         user_obj.save(using=self._db)
 
@@ -57,7 +56,7 @@ class UserManager(BaseUserManager):
 
 
 # Create your user models here.
-class Users(AbstractBaseUser):
+class Users(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
 
     phone_number = models.CharField(max_length=255, blank=True, null=True)
@@ -76,7 +75,9 @@ class Users(AbstractBaseUser):
     # django defaults
     is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -105,5 +106,5 @@ class Users(AbstractBaseUser):
         return self.staff
 
     @property
-    def is_admin(self):
+    def is_superuser(self):
         return self.admin
