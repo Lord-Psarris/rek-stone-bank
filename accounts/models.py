@@ -40,15 +40,15 @@ class UserManager(BaseUserManager):
 
         return user_obj
 
-    def create_staffuser(self, email, password=None):
-        user = self.create_user(email,  password=password)
+    def create_staffuser(self, email, password=None, username=None):
+        user = self.create_user(email,  password=password, username=username)
 
         user.staff = True
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password=None):
-        user = self.create_user(email,  password=password)
+    def create_superuser(self, email, password=None, username=None):
+        user = self.create_user(email,  password=password,  username=username)
 
         user.staff = True
         user.admin = True
@@ -65,7 +65,7 @@ class Users(AbstractBaseUser, PermissionsMixin):
     lastname = models.CharField(max_length=255, blank=True, null=True)
     username = models.CharField(max_length=255, blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)
-    balance = models.FloatField(default=0.0)
+    balance = models.FloatField(default=0.0, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
 
     account_type = models.CharField(max_length=255, blank=True, null=True, choices=[('savings', ('savings')), ('current', ('current'))])
@@ -82,7 +82,7 @@ class Users(AbstractBaseUser, PermissionsMixin):
     is_admin = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
 
     objects = UserManager()
 
