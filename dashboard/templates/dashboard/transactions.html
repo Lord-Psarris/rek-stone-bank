@@ -1,42 +1,17 @@
 {% extends 'dashboard-base.html' %}
 
-{% block title %} Dashboard {% endblock %}
+{% block title %} Transactions {% endblock %}
 
 {% load static %}
 
 {% block main %}
-<!-- Main Stuff -->
-<div class="container-fluid py-4">
-    <div class="row">
-        <div class="card col-xl-6 col-sm-6 mb-xl-0 mb-4">
-            <div class="card-body p-4">
-                <div class="row">
-                    <div class="col-8">
-                        <div class="numbers">
-                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Current Balance</p>
-                            <h3 class="font-weight-bolder mb-0 mt-2">
-                                N69.69
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="col-4 text-end">
-                        <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                            <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Main Stuff -->
 
 <!-- Transactions Table -->
 <div class="container-fluid py-4">
     <div class="row">
         <div class="card mb-4">
             <div class="card-header pb-0">
-                <h6>Recent Transactions</h6>
+                <h6>All Transactions</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
                 <div class="table-responsive p-0">
