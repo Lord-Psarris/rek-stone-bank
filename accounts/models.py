@@ -9,7 +9,7 @@ def upload_path(instance, filename):
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None, account_type=None, phone_number=None, profile_photo=None, firstname=None, lastname=None, username=None, location=None, address=None, is_staff=False, is_active=True, is_superuser=False):
+    def create_user(self, email, password=None, account_type=None, balance=None, phone_number=None, profile_photo=None, firstname=None, lastname=None, username=None, location=None, address=None, is_staff=False, is_active=True, is_superuser=False):
         if not email:
             raise ValueError("All the fields haven't been adequately filled")
         if not password:
@@ -23,13 +23,14 @@ class UserManager(BaseUserManager):
         user_obj.set_password(password)
 
         user_obj.profile_photo = profile_photo
+        user_obj.account_type = account_type
         user_obj.phone_number = phone_number
         user_obj.firstname = firstname
+        user_obj.location = location
         user_obj.lastname = lastname
         user_obj.username = username
-        user_obj.location = location
         user_obj.address = address
-        user_obj.account_type = account_type
+        user_obj.balance = balance
 
         user_obj.staff = is_staff
         user_obj.active = is_active
@@ -64,6 +65,7 @@ class Users(AbstractBaseUser, PermissionsMixin):
     lastname = models.CharField(max_length=255, blank=True, null=True)
     username = models.CharField(max_length=255, blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)
+    balance = models.FloatField(default=0.0)
     address = models.CharField(max_length=255, blank=True, null=True)
 
     account_type = models.CharField(max_length=255, blank=True, null=True, choices=[('savings', ('savings')), ('current', ('current'))])

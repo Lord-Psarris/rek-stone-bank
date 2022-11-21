@@ -8,6 +8,6 @@ class Transactions(models.Model):
     recipient_or_sender = models.ForeignKey(Users, on_delete=models.CASCADE, related_name="recipient_or_sender")
 
     amount = models.IntegerField(default=0)
-    is_completed = models.BooleanField(default=False)
+    successful = models.BooleanField(default=False)
     transfer_type = models.CharField(max_length=255, choices=[('debit', ('debit')), ('credit', ('credit'))])
     date = models.DateField(auto_now_add=True)

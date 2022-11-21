@@ -18,7 +18,8 @@
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Recipient / Sender
                                 </th>
                                 <th
@@ -40,24 +41,37 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% if transactions %}
+                            {% for transaction in transactions %}
                             <tr>
                                 <td class="align-middle text-center">
-                                    <h6 class="mb-0 text-sm mx-2">John Michael</h6>
+                                    <h6 class="mb-0 text-sm mx-2">{{ transaction.recipient_or_sender.username }}</h6>
                                 </td>
                                 <td class="align-middle text-center">
-                                    <p class="text-xs font-weight-bold mb-0">20000</p>
+                                    <p class="text-xs font-weight-bold mb-0">{{ transaction.amount }}</p>
                                 </td>
                                 <td class="align-middle text-center text-sm d-flex justify-content-center">
-                                    <span class="badge badge-sm bg-gradient-success">completed</span> 
-                                    <!-- error is secondary -->
+                                    {% if transaction.successful %}
+                                    <span class="badge badge-sm bg-gradient-success">completed</span>
+                                    {% else %}
+                                    <span class="badge badge-sm bg-gradient-secondary">failed</span>
+                                    {% endif %}
                                 </td>
                                 <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">Debit</span>
+                                    <span class="text-secondary text-xs font-weight-bold">
+                                        {{ transaction.transfer_type }}
+                                    </span>
                                 </td>
                                 <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                    <span class="text-secondary text-xs font-weight-bold">{{ transaction.date }}</span>
                                 </td>
                             </tr>
+                            {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td colspan="5" class="text-center text-sm">No data</td>
+                            </tr>
+                            {% endif %}
                         </tbody>
                     </table>
                 </div>

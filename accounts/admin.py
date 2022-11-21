@@ -12,7 +12,7 @@ class UsersAdmin(UserAdmin):
     list_filter = []
 
     fieldsets = (
-        (None, {'fields': ( 'email', 'username', 'password', 'phone_number', 'firstname', 'lastname', 'location', 'address', 'account_type', 'profile_photo')}),
+        (None, {'fields': ( 'email', 'username', 'password', 'phone_number', 'firstname', 'lastname', 'location', 'address', 'account_type', 'profile_photo', 'balance')}),
 
         ('Permissions', {'fields': ('is_admin',)}),
     )
