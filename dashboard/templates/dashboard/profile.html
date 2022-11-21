@@ -1,0 +1,63 @@
+{% extends 'dashboard-base.html' %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% load static %}
+
+{% block main %}
+<div class="container-fluid mb-5">
+    <div class="page-header min-height-300 border-radius-xl mt-4"
+        style="background-image: url('{% static '/img/curved-images/curved0.jpg' %}'); background-position-y: 50%;">
+        <span class="mask bg-gradient-primary opacity-6"></span>
+    </div>
+    <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+        <div class="row gx-4">
+            <div class="col-auto">
+                <div class="avatar avatar-xl position-relative">
+                    <img src="{% static '/img/bruce-mars.jpg' %}" alt="profile_image"
+                        class="w-100 border-radius-lg shadow-sm">
+                </div>
+            </div>
+            <div class="col-auto my-auto">
+                <div class="h-100">
+                    <h5 class="mb-1">
+                        Alec Thompson
+                    </h5>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Profile Info -->
+        <div class="col-12 col-xl-4" style="background: ttransparent">
+            <div class="h-100">
+                <div class="pb-0 p-3">
+                    <div class="col-md-8 d-flex align-items-center flex-column w-100">
+                        <hr class="horizontal gray-light">
+                        <ul class="list-group">
+                            <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                                <strong class="text-dark">Full Name:</strong> &nbsp; Alec Thompson
+                            </li>
+                            <li class="list-group-item border-0 ps-0 text-sm">
+                                <strong class="text-dark">Mobile:</strong> &nbsp; (44) 123 1234 123
+                            </li>
+                            <li class="list-group-item border-0 ps-0 text-sm">
+                                <strong class="text-dark">Email:</strong> &nbsp; alecthompson@mail.com
+                            </li>
+                            <li class="list-group-item border-0 ps-0 text-sm">
+                                <strong class="text-dark">Address:</strong> &nbsp; some plaxe
+                            </li>
+                            <li class="list-group-item border-0 ps-0 text-sm">
+                                <strong class="text-dark">Location:</strong> &nbsp; USA
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Profile Info -->
+</div>
+</div>
+{% endblock %}
