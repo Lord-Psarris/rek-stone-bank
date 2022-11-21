@@ -20,6 +20,9 @@ source venv/bin/activate
 # install requirements
 pip install -r requirements.txt
 
+# run migrations
+python manage.py migrate
+
 # collect static
 python manage.py collectstatic --no-input
 ```
