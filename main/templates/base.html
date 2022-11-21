@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- meta and title -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> {% block title %}{% endblock %} - Rek Stone Bank </title>
+    {% load static %}
+
+    <!-- fav icons -->
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+    <!-- Nucleo Icons -->
+    <link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet" />
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet" />
+
+    <!-- CSS Files -->
+    <link id="pagestyle" href="{% static 'css/soft-ui-dashboard.css' %}" rel="stylesheet" />
+</head>
+
+
+
+<body class="g-sidenav-show bg-gray-100">
+
+    {% block header %}
+    <!-- Header -->
+    <header class="container position-sticky z-index-sticky top-0">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- Navbar -->
+                <nav
+                    class="navbar blur blur-rounded top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+                    <div class="container-fluid pe-0">
+                        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-center w-100 align-items-center"
+                            href="/">
+                            <svg fill="#344767" xmlns="http://www.w3.org/2000/svg" width="24" height="20"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M7 21h-4v-11h4v11zm7-11h-4v11h4v-11zm7 0h-4v11h4v-11zm2 12h-22v2h22v-2zm-23-13h24l-12-9-12 9z" />
+                            </svg>
+                            Rek Stone Bank
+                        </a>
+                    </div>
+                </nav>
+                <!-- End Navbar -->
+
+            </div>
+        </div>
+    </header>
+    <!-- End Header -->
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block footer %}
+    <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-4 mx-auto text-center">
+                    <a href="#" target="_blank" class="text-secondary text-center me-3 mb-sm-0 mb-2">
+                        About Us
+                    </a>
+                    <a href="#" target="_blank" class="text-secondary text-center me-3 mb-sm-0 mb-2">
+                        Products
+                    </a>
+                    <a href="#" target="_blank" class="text-secondary text-center me-3 mb-sm-0 mb-2">
+                        Blog
+                    </a>
+                </div>
+                <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
+                    <a href="#" target="_blank" class="text-secondary text-center me-3">
+                        <span class="text-lg fab fa-dribbble"></span>
+                    </a>
+                    <a href="#" target="_blank" class="text-secondary text-center me-3">
+                        <span class="text-lg fab fa-twitter"></span>
+                    </a>
+                    <a href="#" target="_blank" class="text-secondary text-center me-3">
+                        <span class="text-lg fab fa-instagram"></span>
+                    </a>
+                    <a href="#" target="_blank" class="text-secondary text-center me-3">
+                        <span class="text-lg fab fa-pinterest"></span>
+                    </a>
+                    <a href="#" target="_blank" class="text-secondary text-center me-3">
+                        <span class="text-lg fab fa-github"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 mx-auto text-center mt-1">
+                    <p class="mb-0 text-secondary">
+                        Copyright ©
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script> Rek Stone Bank
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% endblock %}
+
+    <!--   Core JS Files   -->
+    <script src="{% static 'js/core/popper.min.js' %}"></script>
+    <script src="{% static 'js/core/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/plugins/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'js/plugins/smooth-scrollbar.min.js' %}"></script>
+    <script src="{% static 'js/plugins/chartjs.min.js' %}"></script>
+
+    {% block styles %}
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+
+    <script>
+        var pathname = window.location.pathname;
+        var page = pathname.split("/")
+        console.log(page)
+        page = page[page.length - 2]
+
+        if (!page) {
+            page = "home"
+        }
+
+        document.querySelectorAll(`#${page}`).forEach((item) => {
+            item.classList.add("active");
+        })
+    </script>
+    {% endblock %}
+
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{% static 'js/soft-ui-dashboard.min.js' %}"></script>
+</body>
+
+</html>
