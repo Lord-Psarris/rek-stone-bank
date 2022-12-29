@@ -91,10 +91,10 @@ WSGI_APPLICATION = 'rekstone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'idhlyavsdygnbu',
+        'NAME': 'd1mqknrl3lbcup',
         'HOST': 'ec2-52-203-118-49.compute-1.amazonaws.com',
         'PORT': 5432,
-        'USER': 'd1mqknrl3lbcup',
+        'USER': 'idhlyavsdygnbu',
         'PASSWORD': '5dcacc1afd35dab614dfcf591e6870d6414d4685b05a9acf1833b2ef1f740970',
     }
 
